@@ -7,11 +7,11 @@ import os
 app = Flask(__name__, static_folder='dist')
 CORS(app)
 
-# Twilio credentials
-TWILIO_ACCOUNT_SID = "AC422776bc7c1d025cccf035a6757a6f03"
-TWILIO_AUTH_TOKEN = "620760aa0f49f3b50e525b95fe8eb078"
-TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"
-MY_WHATSAPP_NUMBER = "whatsapp:+972502334565"
+# Twilio credentials from environment variables
+TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
+TWILIO_WHATSAPP_NUMBER = os.environ.get("TWILIO_WHATSAPP_NUMBER")
+MY_WHATSAPP_NUMBER = os.environ.get("MY_WHATSAPP_NUMBER")
 
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
@@ -47,4 +47,5 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    # Use 0.0.0.0 so Render יכולה לגשת לשרת
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
