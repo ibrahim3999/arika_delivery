@@ -11,6 +11,11 @@ CORS(app)
 
 # Logging setup
 logging.basicConfig(level=logging.INFO)
+print("TWILIO_ACCOUNT_SID:", TWILIO_ACCOUNT_SID)
+print("TWILIO_AUTH_TOKEN:", TWILIO_AUTH_TOKEN)
+print("TWILIO_WHATSAPP_NUMBER:", TWILIO_WHATSAPP_NUMBER)
+print("MY_WHATSAPP_NUMBER:", MY_WHATSAPP_NUMBER)
+
 
 # קריאה של משתנים מהסביבה
 TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
@@ -77,3 +82,4 @@ def serve(path):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
+
