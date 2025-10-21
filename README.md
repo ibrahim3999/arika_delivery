@@ -1,1 +1,1 @@
-akiladelivery.com
+www.akiladelivery.com
